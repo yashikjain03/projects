@@ -1,0 +1,357 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap");
+
+
+
+*{margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:"Be Vietnam Pro", sans-serif;
+}
+
+:root{
+    --bgorange:#e84949;
+}
+
+
+#wrapper{
+    height:100vh;
+    overflow-y:auto;
+    overflow-x:hidden;/*x direction me scroll nahi krna hai*/
+
+}
+
+.container{
+    width:1200px;
+    margin:0 auto;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;/*content me jo 2 blocks hain(logo-container,nav-items) wo hme extremeties pr chahie*/
+    align-items:center;
+    padding-top:1rem;
+}
+
+#logo{
+    width:80px;
+}
+
+.logo-container{
+    display:flex;/*CONTENT ko horizontally place krne ke liye*/
+    justify-content:baseline;
+    align-items:center;/*content ko same se level pe leke aane ke liye*/
+}
+
+.logo-text{
+    margin-left:-1.2rem;/*ohn doe me changes*/
+    font-size:28px;/*ohn doe me changes*/
+}
+
+.nav-items{
+    display:flex;/*CONTENT ko horizontally place krne ke liye*/
+    gap:2rem;
+    padding:0 4rem;
+}
+
+.nav-items div{/*div mtlb nav items ke andr jitne bhi div hain un sb pe ye wali properties lg jayengi*/
+    font-size:20px;
+    font-weight:500;
+    cursor:pointer;/*links ke upar jayen to mouse icon change ho jaye*/
+}
+
+.nav-items div a{/*nav items ke andar div hai or un divs me se jo a(anchor tags) hain unka color black krdo....ye hm anchor ki properties me alg se bhi chanbge kr skte the but we want the color to be black only in nav bar*/
+    color:black;
+}
+
+a{
+    /*anchor tag ki properties me changes kr rhe hain jaise underline show naa ho etc*/
+    text-decoration:none;/*underlined nahi hoga link isse*/
+}
+
+.nav-items div:hover{
+    transition:all 0.8s ease;/*main chahta hun ki hover krne pr jo bhi changes hon wo smoothly hon therefore i used transition*/
+    font-weight:bold;/*hover krne pr font bold saa ho jaye*/
+}
+
+.hero-section{
+    position:relative;/*detail me pdhna hai abhi vaise kisi chiz ko agr relative position krna overlap krwane ke liye to uske parent ka positioning absolute hona chahie*/
+    display:flex;/*horizontally place krne ke liye teeno sections(hero-left hero-right hero-faded) ko*/
+    justify-content:center;
+    align-items:center;
+    
+    gap:5rem;
+    margin:4rem auto;
+    padding:0 1rem;
+    padding-bottom:8rem;
+}
+
+.faded-text{
+    user-select:none;/*koi bhi user select naa kr paye*/
+    font-size:7em;
+    color:rgb(231,231,231);
+    /* position:absolute; */
+    
+    /*positioning properties --> designer providew krta hai*/
+    bottom:-16%;
+    left:-5%;
+    font-weight:bold;
+    transition:all 3s;
+}
+
+.hero-section-left{
+    display:flex;
+    flex-direction:column;/*by defaul flex will align the content in horizontal direction so to get it in verticsl direction u have to write the direction to be column*/
+    justify-content:center;
+    gap:2rem;
+}
+
+.hero-section-heading{
+    font-size:35px;
+    color:#343d68;
+    font-weight:500;
+}
+
+.hero-section-subheading{
+    font-size:45px;
+    line-height:45px;
+}
+
+.role{
+    color:#4e45d5;
+    font-weight:800;
+}
+
+.hero-section-description{
+margin-top:1rem;
+width:70%;
+font-weight:500;
+}
+
+.btn-pink{
+    background-color: var(--bgorange);
+    width:fit-content;
+    color:white;
+    padding:0.8rem 2.3rem;
+    box-shadow:5px 5px 7px 0px #0000003f;
+    font-size:18px;
+    cursor:pointer;
+    transition:all 0.5s;
+    font-weight:500;
+    border:solid 3px transparent;
+    position:relative;
+    z-index:1;
+
+}
+
+.btn-pink::before{
+    content:"";
+    position:absolute;
+    background-color:#fff;
+    top:0px;
+    left:0;
+    right:0;
+    bottom:0px;
+    z-index:-1;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:all 0.8s;
+}
+
+.btn-pink:hover::before{
+    transform:scaleX(1);
+
+}
+
+.btn-pink:hover{
+    border:solid 3px var(--bgorange);
+    color:black;
+} 
+
+.hero-section-right{
+    position:relative;
+}
+
+.absolute{
+    position:absolute;
+}
+
+.user-image{
+    padding:2.5rem;/*white si patti aagai*/
+
+    filter:grayscale(1);
+    transition:all 1s;
+    animation:scaleimage 5s linear infinite;
+
+
+}
+
+.user-image img{
+    z-index:-9;
+}
+
+
+
+@keyframes scaleimage{
+
+    0%{
+        filter:grayscale(0);
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.1);
+        filter:grayscale(1);
+        box-shadow:3px 3px 10px black;
+    }
+    100%{
+         transform:scale(1);
+         filter:grayscale(0);
+}
+}
+
+.icon-dots{
+    z-index:9;
+    bottom:-1rem;
+    right:0;
+    animation-name:dots-animation;
+    animation-duration:2s;
+    animation-iteration-count:infinite;
+}
+
+@keyframes dots-animation{
+    0%{
+       transform:translateY(0px);/*movement krwane ke liye translate use hota hai*/
+
+    }
+    50%{
+    transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.icon-cube{
+  z-index:9;
+  top:-0.8em;
+  right:1em;
+  animation:cube-rotate 2s infinite;
+}
+
+@keyframes cube-rotate{
+    0%{
+       transform:rotateY(0deg) translateY(0px);
+
+    }
+    50%{
+    transform:rotateY(180deg) translateY(-12px);
+    }
+    100%{
+        transform:rotateY(360deg) translateY(0px);
+    }
+}
+
+.icon-circle{
+    z-index:9;
+    left:0;
+    bottom:0;
+    animation:shake-effect 2s linear infinite;
+}
+
+@keyframes shake-effect
+{
+    0%{
+        left:0;
+        bottom:0;
+ 
+     }
+     50%{
+        left:5%;
+        bottom:10%;
+     }
+   
+     100%{
+        left:0;
+        bottom:0;
+         
+     } 
+}
+
+
+.icon-zigzag{
+    z-index:9;
+    top:1.5rem;
+    left:-0.3em;
+    animation:zigzagani 3s ease-in infinite;
+}
+
+@keyframes zigzagani
+{
+    0%{
+        left:0;
+        top:0;
+ 
+     }
+     50%{
+        left:5%;
+       top:2%;
+     }
+   
+     100%{
+        left:0;
+        bottom:0;
+         
+     } 
+}
+
+.icon-plus{
+    z-index: index 9;
+    top:-0.8rem;
+    left:50%;
+    animation:shake-effect-plus 3s ease-in infinite;
+}
+
+@keyframes shake-effect-plus
+{
+    
+     50%{
+        left:48%;
+       top:3%;
+     }
+   
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
